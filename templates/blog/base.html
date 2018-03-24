@@ -1,0 +1,35 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>My BLOG</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    </head>
+    <body bgcolor="lightgreen">
+        <div class="container">
+            <header>
+                <div class="nav-left">
+                    <h1>
+                        <a href="/blog/">My BLOG</a>
+                    </h1>
+                </div>
+                <div class="nav-right">
+                    <a href="{% url 'post_new' %}">+ New Blog Post</a>
+                </div>
+            </header>
+            {% if user.is_authenticated %}
+            <p>HI {{ user.username }}!!!</p>
+            <p><a href="{% url 'logout' %}">Logout</a></p>
+            {% else %}
+            <p>You are not logged in.</p>
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+        <footer>
+            This BLOG is property of Abhishek Tiwari.. All Rights Reserved.. 
+        </footer>
+    </body>
+</html>

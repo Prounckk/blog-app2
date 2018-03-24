@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<ul>
+    {% for post in object_list%}
+    <hr>
+    <div class="post-entry" style="background-color:teal">
+        <li>
+            <h2 style="background-color:yellowgreen"><a href="{% url 'post-detail' post.pk %}" target="_blank">{{ post.title }}</a></h2>
+            <h4>Author: {{ post.author }}</h4>
+            <p>{{ post.body }}</p>
+        </li>
+    </div>
+    <hr>
+    {% endfor %}
+</ul>
+{% endblock content %}
